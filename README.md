@@ -98,3 +98,15 @@ Notre projet présente plusieurs impacts significatifs :
 ```bash
 git clone https://github.com/Bourhazi/ACE_Project
 cd ACE_Project
+
+
+
+### Lancer les Services avec Docker
+docker-compose up
+
+## Accéder à l'application :
+Frontend Web : http://localhost:3000
+API Backend : http://localhost:8082
+
+## Pour arreter et supprimer  tous les conteneurs en cours d'execution :
+docker-compose down
