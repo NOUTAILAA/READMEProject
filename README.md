@@ -129,4 +129,5 @@ docker-compose down
 
 ---
 ### Vidéo démonstration 
-![Demo](./images/screen-capture.mp4)  
+[Vidéo de démonstration](./images/screen-capture.mp4)
+
