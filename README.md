@@ -30,7 +30,7 @@ L'application est construite autour de quatre microservices principaux :
 ## Diagramme BPMN  
 Ce diagramme illustre le flux de calcul des racines polynomiales :  
 
-![Diagramme BPMN](./images/bpmn_workflow.jpeg)  
+![Diagramme BPMN](./images/BPMN2.jpg)  
 
 ---
 
