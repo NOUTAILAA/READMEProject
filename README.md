@@ -69,7 +69,8 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ### Microservice SPRING BOOT  
 ![SonarQube SPRING BOOT](./images/microservStockage.jpg)  
 ---
-
+## Images dans Docker
+![Images Docker](./images/microservStockage.jpg) 
 ## Impact  
 Notre projet présente plusieurs impacts significatifs :  
 - **Calculs rapides et automatisés** – Réduction du temps de traitement (minutes au lieu d'heures)  
@@ -99,21 +100,16 @@ Notre projet présente plusieurs impacts significatifs :
 git clone https://github.com/Bourhazi/ACE_Project
 cd ACE_Project
 ```
-
+---
 
 #### Lancer les Services avec Docker
-```bash
 docker-compose up
-```
-
+---
 ### Accéder à l'application :
 Frontend Web : http://localhost:3000
 API Backend : http://localhost:8082
-
-### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
-```bash
-docker-compose down
-```
 ---
+### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
+docker-compose down
 
-
+---
