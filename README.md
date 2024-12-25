@@ -71,6 +71,13 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ---
 ## Images dans Docker
 ![Images Docker](./images/imageDocker.jpg) 
+
+---
+## Intégration des pipelines
+
+Nous avons intégré un pipeline CI/CD avec Jenkins pour automatiser le processus de développement, de test et de déploiement de l'application. Ce pipeline gère plusieurs étapes essentielles, notamment la gestion des permissions, l'installation des dépendances, le clonage des dépôts, la construction des images Docker pour les différents microservices et le déploiement via Docker Compose. Cette approche garantit un flux de travail efficace, réduit les erreurs manuelles et facilite la mise à jour continue de l'application.
+
+---
 ## Impact  
 Notre projet présente plusieurs impacts significatifs :  
 - **Calculs rapides et automatisés** – Réduction du temps de traitement (minutes au lieu d'heures)  
@@ -90,11 +97,6 @@ Notre projet présente plusieurs impacts significatifs :
 ---
 
 
-## Technologies Utilisées
-
-Nous avons intégré un pipeline CI/CD avec Jenkins pour automatiser le processus de développement, de test et de déploiement de l'application. Ce pipeline gère plusieurs étapes essentielles, notamment la gestion des permissions, l'installation des dépendances, le clonage des dépôts, la construction des images Docker pour les différents microservices et le déploiement via Docker Compose. Cette approche garantit un flux de travail efficace, réduit les erreurs manuelles et facilite la mise à jour continue de l'application.
-
----
 ## Installation et Exécution  
 ### Prérequis :  
 - Docker et Docker Compose  
