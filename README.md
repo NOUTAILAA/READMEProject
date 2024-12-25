@@ -73,9 +73,102 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ![Images Docker](./images/imageDockerr2.jpg) 
 
 ----
-## Docker Image
+## Docker Compose
 ```bash
-hello
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysqldb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: polynome
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1" ]
+      interval: 10s
+      retries: 10
+      start_period: 30s
+      timeout: 5s
+
+  spring-app:
+    image: polynomespring-app
+    container_name: spring-app
+    build:
+      context: ./MicroServiceStockage_CalculAutomatiseRacinePolynome
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - app-network
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  python1:
+    image: microservicepython1-traitement
+    container_name: python1
+    build:
+      context: ./MicroServiceTraitement-Calcul-Automatis-Racine-Poylynomes
+      dockerfile: Dockerfile
+    ports:
+      - "5110:5110"
+    networks:
+      - app-network
+    environment:
+      FLASK_ENV: production
+
+  python2:
+    image: microservicepython2-traitement
+    container_name: python2
+    build:
+      context: ./MicroServiceTraitement2-Calcul-Automatis-Racine-Poylynomes
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    networks:
+      - app-network
+    environment:
+      FLASK_ENV: production
+
+  python3:
+    image: microservicepython3-traitement
+    container_name: python3
+    build:
+      context: ./MicroServiceTraitement3-Calcul-Automatis-Racine-Poylynomes
+      dockerfile: Dockerfile
+    ports:
+      - "5004:5004"
+    networks:
+      - app-network
+    environment:
+      FLASK_ENV: production
+
+  react-frontend:
+    image: polynomial-react-frontend
+    container_name: react-frontend
+    build:
+      context: ./CalculPolynomial_Front_Web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    depends_on:
+      - spring-app
 ```
 
 ---
