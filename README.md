@@ -72,6 +72,12 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ## Images dans Docker
 ![Images Docker](./images/imageDockerr2.jpg) 
 
+----
+## Docker Image
+```bash
+hello
+```
+
 ---
 ## Intégration des pipelines
 
