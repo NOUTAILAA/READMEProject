@@ -131,8 +131,6 @@ docker-compose down
 ### Vidéo démonstration 
 
 
-## Vidéo Démonstration
-
 <video width="800" height="450" controls>
   <source src="./images/screen-capture.mp4" type="video/mp4">
   Votre navigateur ne supporte pas la balise vidéo.
