@@ -76,3 +76,9 @@ Notre projet présente plusieurs impacts significatifs :
 ```bash
 git clone https://github.com/Bourhazi/ACE_Project
 cd ACE_Project
+
+### Cloner le projet :
+### Lancer les services avec Docker :
+bash
+Copy code
+
