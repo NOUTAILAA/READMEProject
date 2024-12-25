@@ -17,7 +17,7 @@ L'application est accessible via des interfaces web et mobiles, permettant aux u
 - **Portabilité et Scalabilité** grâce à Docker  
 
 ---
-
+**jdgjdg**
 ## Architecture du logiciel  
 L'application est construite autour de quatre microservices principaux :  
 - **Microservice de Stockage (Spring Boot)** : Gestion des requêtes utilisateur et stockage  
