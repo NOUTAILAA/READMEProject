@@ -79,7 +79,7 @@ Notre projet présente plusieurs impacts significatifs :
 ---
 
 ## Technologies Utilisées  
-- **Backend :** Spring Boot, Flask  
+- **Backend :** Spring Boot, Python
 - **Frontend :** ReactJS, Flutter  
 - **Containerisation :** Docker  
 - **Monitoring :** Grafana, Prometheus  
