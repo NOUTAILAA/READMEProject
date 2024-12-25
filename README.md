@@ -70,7 +70,7 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ![SonarQube SPRING BOOT](./images/microservStockage.jpg)  
 ---
 ## Images dans Docker
-![Images Docker](./images/imageDocker.jpg) 
+![Images Docker](./images/imageDcker.jpg) 
 
 ---
 ## Intégration des pipelines
