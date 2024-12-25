@@ -129,5 +129,6 @@ docker-compose down
 
 ---
 ### Vidéo démonstration 
-[Vidéo de démonstration](./images/screen-capture.mp4)
+![Demo](./images/screen-capture.mp4)   ceci est correct ? 
+
 
