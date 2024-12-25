@@ -129,4 +129,4 @@ docker-compose down
 
 ---
 ### Vidéo démonstration 
-![SonarQube Numpy](./images/screen-capture).mp4)  
+![Demo](./images/screen-capture.mp4)  
