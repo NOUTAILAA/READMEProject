@@ -102,16 +102,17 @@ cd ACE_Project
 
 
 #### Lancer les Services avec Docker
+```bash
 docker-compose up
-
+```
 
 ### Accéder à l'application :
 Frontend Web : http://localhost:3000
 API Backend : http://localhost:8082
 
 ### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
-docker-compose down
-
+```bashdocker-compose down
+```
 ---
 
-**jdgjdg**
+
