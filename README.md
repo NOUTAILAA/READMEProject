@@ -67,7 +67,7 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ![SonarQube Sympy](./images/microservsympy.jpg)  
 
 ### Microservice Sympy  
-![SonarQube SPRING BOOT](./images/microservStockage.png)  
+![SonarQube SPRING BOOT](./images/microservStockage.jpg)  
 ---
 
 ## Impact  
