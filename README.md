@@ -17,7 +17,7 @@ L'application est accessible via des interfaces web et mobiles, permettant aux u
 - **Portabilité et Scalabilité** grâce à Docker  
 
 ---
-**jdgjdg**
+
 ## Architecture du logiciel  
 L'application est construite autour de quatre microservices principaux :  
 - **Microservice de Stockage (Spring Boot)** : Gestion des requêtes utilisateur et stockage  
@@ -103,14 +103,14 @@ cd ACE_Project
 
 #### Lancer les Services avec Docker
 docker-compose up
-
-## Accéder à l'application :
+---
+### Accéder à l'application :
 Frontend Web : http://localhost:3000
 API Backend : http://localhost:8082
-
-## Pour arreter et supprimer  tous les conteneurs en cours d'execution :
+---
+### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
 docker-compose down
 
-
+---
 
 **jdgjdg**
