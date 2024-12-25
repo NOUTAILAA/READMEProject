@@ -70,7 +70,7 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 ![SonarQube SPRING BOOT](./images/microservStockage.jpg)  
 ---
 ## Images dans Docker
-![Images Docker](./images/microservStockage.jpg) 
+![Images Docker](./images/imageDocker.jpg) 
 ## Impact  
 Notre projet présente plusieurs impacts significatifs :  
 - **Calculs rapides et automatisés** – Réduction du temps de traitement (minutes au lieu d'heures)  
