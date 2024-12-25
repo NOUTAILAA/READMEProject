@@ -34,18 +34,40 @@ Ce diagramme illustre le flux de calcul des racines polynomiales :
 
 ---
 
+## Monitoring avec Grafana  
+Des tableaux de bord Grafana permettent de surveiller les performances des microservices et d’analyser les indicateurs clés.  
+
+### Taux de succès total  
+![Taux de succès total](./images/ratio_success_total.jpg)  
+
+### Ratio de création  
+![Ratio de création](./images/ratio_created.jpg)  
+
+### Temps de réponse (Total)  
+![Temps de réponse total](./images/reponse_time_sum.jpg)  
+
+### Temps de réponse (Nombre de requêtes)  
+![Nombre de requêtes](./images/response_time_count.jpg)  
+
+### Temps de réponse (Global)  
+![Temps de réponse global](./images/response_time.jpg)  
+
+---
+
 ## Analyse SonarQube  
 L'analyse SonarQube garantit la qualité et la sécurité du code source pour chaque microservice.  
 
 ### Microservice Newton-Raphson  
-![SonarQube Newton-Raphson](./images/sonarqube_newton.png)  
+![SonarQube Newton-Raphson](./images/microservnewton.png)  
 
 ### Microservice Numpy  
-![SonarQube Numpy](./images/sonarqube_numpy.png)  
+![SonarQube Numpy](./images/microservnumpy.png)  
 
 ### Microservice Sympy  
-![SonarQube Sympy](./images/sonarqube_sympy.png)  
+![SonarQube Sympy](./images/microservsympy.png)  
 
+### Microservice Sympy  
+![SonarQube SPRING BOOT](./images/microservStockage.png)  
 ---
 
 ## Impact  
@@ -76,9 +98,3 @@ Notre projet présente plusieurs impacts significatifs :
 ```bash
 git clone https://github.com/Bourhazi/ACE_Project
 cd ACE_Project
-
-### Cloner le projet :
-### Lancer les services avec Docker :
-bash
-Copy code
-
