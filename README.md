@@ -111,7 +111,8 @@ Frontend Web : http://localhost:3000
 API Backend : http://localhost:8082
 
 ### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
-```bashdocker-compose down
+```bash
+docker-compose down
 ```
 ---
 
