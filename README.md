@@ -58,13 +58,13 @@ Des tableaux de bord Grafana permettent de surveiller les performances des micro
 L'analyse SonarQube garantit la qualité et la sécurité du code source pour chaque microservice.  
 
 ### Microservice Newton-Raphson  
-![SonarQube Newton-Raphson](./images/microservnewton.png)  
+![SonarQube Newton-Raphson](./images/microservnewton.jpg)  
 
 ### Microservice Numpy  
-![SonarQube Numpy](./images/microservnumpy.png)  
+![SonarQube Numpy](./images/microservnumpy.jpg)  
 
 ### Microservice Sympy  
-![SonarQube Sympy](./images/microservsympy.png)  
+![SonarQube Sympy](./images/microservsympy.jpg)  
 
 ### Microservice Sympy  
 ![SonarQube SPRING BOOT](./images/microservStockage.png)  
