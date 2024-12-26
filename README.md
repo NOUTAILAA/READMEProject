@@ -172,6 +172,266 @@ services:
 ```
 
 ---
+----
+```bash
+pipeline {
+    agent any
+
+    environment {
+        // Définition des images Docker pour chaque service
+        DOCKER_IMAGE_SPRING = 'polynomespring-app:latest'
+        DOCKER_IMAGE_PYTHON1 = 'microservicepyth    on1-traitement:latest'
+        DOCKER_IMAGE_PYTHON2 = 'microservicepython2-traitement:latest'
+        DOCKER_IMAGE_PYTHON3 = 'microservicepython3-traitement:latest'
+        DOCKER_IMAGE_REACT = 'polynomial-react-frontend:latest'
+    }
+
+    stages {
+        stage('Configurer les permissions pour Jenkins') {
+            steps {
+                script {
+                    sh '''
+                    echo "Vérification des permissions pour l'utilisateur Jenkins..."
+                    
+                    # Vérifiez si Jenkins appartient au groupe Docker
+                    if ! groups jenkins | grep -q docker; then
+                        echo "Ajout de l'utilisateur Jenkins au groupe Docker..."
+                        usermod -aG docker jenkins
+                        chown root:docker /var/run/docker.sock
+                        echo "Permissions mises à jour pour Jenkins."
+        
+                        # Redémarrez automatiquement le conteneur Jenkins
+                        CONTAINER_ID=$(hostname)
+                        echo "Redémarrage du conteneur Jenkins ($CONTAINER_ID)..."
+                        docker restart $CONTAINER_ID || { echo "Échec du redémarrage automatique. Veuillez redémarrer manuellement le conteneur."; exit 1; }
+                        exit 1 # Arrêter le pipeline pour permettre au conteneur redémarré de prendre en compte les changements
+                    fi
+        
+                    # Vérifiez si Jenkins peut accéder à Docker
+                    echo "Vérification de l'accès Docker pour Jenkins..."
+                    if ! docker ps >/dev/null 2>&1; then
+                        echo "Échec de l'accès Docker pour Jenkins."
+                        echo "Veuillez redémarrer manuellement le conteneur Jenkins pour appliquer les permissions."
+                        exit 1
+                    fi
+        
+                    echo "L'utilisateur Jenkins a correctement accès à Docker."
+                    '''
+                }
+            }
+        }
+
+
+
+        stage('Installer les dépendances système') {
+            steps {
+                script {
+                    sh '''
+                    echo "Mise à jour des paquets système"
+                    if [ "$(id -u)" -eq 0 ]; then
+                        apt-get update
+                        apt-get install -y python3.11-venv nodejs npm
+                    else
+                        echo "L'utilisateur actuel n'est pas root. Exécution avec Docker."
+                        docker exec -u root jenkins_new bash -c "apt-get update && apt-get install -y python3.11-venv nodejs npm"
+                    fi
+                    '''
+                }
+            }
+        }
+
+        stage('Cloner le dépôt et les sous-modules') {
+            steps {
+                script {
+                    echo "Clonage du dépôt et des sous-modules"
+                    git url: 'https://github.com/Bourhazi/ACE_Project-.git', branch: 'main'
+                    sh 'git submodule update --init --recursive || git submodule update --force --recursive'
+                }
+            }
+        }
+
+        stage('Vérification et Checkout des branches') {
+            steps {
+                script {
+                    echo "Mise à jour des sous-modules et sélection des branches correctes"
+                    dir('MicroServiceStockage_CalculAutomatiseRacinePolynome') {
+                        sh 'git fetch --all'
+                        sh 'git checkout main_test'
+                    }
+                    dir('MicroServiceTraitement-Calcul-Automatis-Racine-Poylynomes') {
+                        sh 'git fetch --all'
+                        sh 'git checkout main_test'
+                    }
+                    dir('MicroServiceTraitement2-Calcul-Automatis-Racine-Poylynomes') {
+                        sh 'git fetch --all'
+                        sh 'git checkout main_test'
+                    }
+                    dir('MicroServiceTraitement3-Calcul-Automatis-Racine-Poylynomes') {
+                        sh 'git fetch --all'
+                        sh 'git checkout main_test'
+                    }
+                    dir('CalculPolynomial_Front_Web') {
+                        script {
+                            sh '''
+                            git fetch --all
+                            git checkout versionfinale
+                            git pull origin versionfinale
+                            if [ ! -f Dockerfile ]; then
+                                echo "Erreur : Dockerfile manquant dans la branche versionfinale."
+                                exit 1
+                            fi
+                            '''
+                            sh 'docker build -t $DOCKER_IMAGE_REACT .'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Installer les dépendances React') {
+            steps {
+                dir('CalculPolynomial_Front_Web') {
+                    sh '''
+                    npm install
+                    '''
+                }
+            }
+        }
+
+        stage('Lancer React') {
+            steps {
+                dir('CalculPolynomial_Front_Web') {
+                    sh '''
+                    npm start &
+                    '''
+                }
+            }
+        }
+
+        stage('Démarrer MySQL avec Docker Compose') {
+            steps {
+                script {
+                    sh '''
+                    # Vérifier si un conteneur "mysqldb" existe et le supprimer s'il est en conflit
+                    if docker ps -a --format '{{.Names}}' | grep -q '^mysqldb$'; then
+                        echo "Un conteneur existant nommé 'mysqldb' a été trouvé. Suppression..."
+                        docker rm -f mysqldb
+                    fi
+        
+                    # Lancer MySQL avec Docker Compose
+                    docker-compose up -d mysql
+                    '''
+                }
+            }
+        }
+
+
+        stage('Attendre que MySQL soit prêt') {
+            steps {
+                script {
+                    def mysqlReady = false
+                    for (int i = 0; i < 30; i++) {
+                        sleep(10)
+                        def result = sh(script: "docker exec mysqldb mysqladmin ping -h localhost -uroot -proot", returnStatus: true)
+                        if (result == 0) {
+                            mysqlReady = true
+                            break
+                        }
+                    }
+                    if (!mysqlReady) {
+                        error "MySQL n'a pas démarré dans le délai imparti"
+                    }
+                }
+            }
+        }
+
+        stage('Lancer le service Spring Boot') {
+            steps {
+                dir('MicroServiceStockage_CalculAutomatiseRacinePolynome') {
+                    sh '''
+                    git fetch --all
+                    git checkout main_test
+                    git pull origin main_test
+                    if [ ! -f Dockerfile ]; then
+                        echo "Erreur : Dockerfile manquant pour le service Spring Boot."
+                        exit 1
+                    fi
+                    docker build -t $DOCKER_IMAGE_SPRING .
+                    '''
+                }
+            }
+        }
+
+        stage('Lancer Python Microservices') {
+            parallel {
+                stage('Python 1') {
+                    steps {
+                        dir('MicroServiceTraitement-Calcul-Automatis-Racine-Poylynomes') {
+                            sh '''
+                            python3 -m venv venv
+                            venv/bin/pip install -r requirements.txt
+                            nohup venv/bin/python app.py &
+                            '''
+                        }
+                    }
+                }
+                stage('Python 2') {
+                    steps {
+                        dir('MicroServiceTraitement2-Calcul-Automatis-Racine-Poylynomes') {
+                            sh '''
+                            python3 -m venv venv
+                            venv/bin/pip install -r requirements.txt
+                            nohup venv/bin/python app2.py &
+                            '''
+                        }
+                    }
+                }
+                stage('Python 3') {
+                    steps {
+                        dir('MicroServiceTraitement3-Calcul-Automatis-Racine-Poylynomes') {
+                            sh '''
+                            python3 -m venv venv
+                            venv/bin/pip install -r requirements.txt
+                            nohup venv/bin/python app5.py &
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Démarrer les services avec Docker Compose') {
+            steps {
+                script {
+                    sh '''
+                    # Vérifier et supprimer les conteneurs existants
+                    for container in mysqldb python1 python2 python3 spring-app; do
+                        if docker ps -a --format '{{.Names}}' | grep -q "^$container$"; then
+                            echo "Suppression du conteneur existant : $container"
+                            docker rm -f $container
+                        fi
+                    done
+        
+                    # Lancer les services avec docker-compose
+                    docker-compose up -d
+                    '''
+                }
+            }
+        }
+
+
+        stage('Arrêter les conteneurs') {
+            steps {
+                dir('ACE_Project-') {
+                    sh 'docker-compose down'
+                }
+            }
+        }
+    }
+}
+
+```
+----
 ## Utilisation 
 ### Pour se connecter en tant que calculateur :
 email:notaila7@gmail.com
