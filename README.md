@@ -172,7 +172,8 @@ services:
 ```
 
 ---
-----
+### Pipeline 
+---
 ```bash
 pipeline {
     agent any
