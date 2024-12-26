@@ -177,7 +177,7 @@ services:
 email:notaila7@gmail.com
 password : password123
 
-### Pour se connecter en tant que calculateur :
+### Pour se connecter en tant qu'admin :
 email:root@gmail.com
 password : root
 
