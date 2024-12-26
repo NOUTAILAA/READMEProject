@@ -20,7 +20,7 @@ L'application est accessible via des interfaces web et mobiles, permettant aux u
 
 ## Architecture du logiciel  
 L'application est construite autour de quatre microservices principaux :  
-- **Microservice de Stockage (Spring Boot)** : Gestion des requêtes utilisateur avec JWT et stockage  
+- **Microservice de Stockage (Spring Boot)** : Gestion des utilisateurs avec JWT et stockage de polynomes en base de données MySQL
 - **Microservice Numpy (Flask/Python)** : Calcul numérique des racines  
 - **Microservice Sympy (Flask/Python)** : Factorisation symbolique et calcul algébrique  
 - **Microservice Newton-Raphson (Flask/Python)** : Approximations itératives des racines  
