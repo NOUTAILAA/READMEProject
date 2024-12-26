@@ -172,6 +172,15 @@ services:
 ```
 
 ---
+## Utilisation 
+### Pour se connecter en tant que calculateur :
+email:notaila7@gmail.com
+password : password123
+
+### Pour se connecter en tant que calculateur :
+email:root@gmail.com
+password : root
+
 ## Intégration des pipelines
 
 Nous avons intégré un pipeline CI/CD avec Jenkins pour automatiser le processus de développement, de test et de déploiement de l'application. Ce pipeline gère plusieurs étapes essentielles, notamment la gestion des permissions, l'installation des dépendances, le clonage des dépôts, la construction des images Docker pour les différents microservices et le déploiement via Docker Compose. Cette approche garantit un flux de travail efficace, réduit les erreurs manuelles et facilite la mise à jour continue de l'application.
