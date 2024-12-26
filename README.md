@@ -220,7 +220,9 @@ cd ACE_Project
 ---
 
 #### Lancer les Services avec Docker
+
 docker-compose up
+
 ---
 ### Accéder à l'application :
 Frontend Web : http://localhost:3000
