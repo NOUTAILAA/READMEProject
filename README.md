@@ -4,13 +4,13 @@
 BENZALA, BOURHAZI, AIT IHSSAN, IBOURKI, BELAHRECH  
 
 ## Description  
-Ce projet est une solution logicielle modulaire et automatisée pour le calcul des racines de polynômes. Il exploite des microservices pour effectuer des calculs numériques et symboliques à l'aide de bibliothèques comme **Numpy**, **Sympy**, **Newton-Raphson** , et l' **algorithme de Matplotlib pour visualiser le graphe de solutions** .  
+Ce projet est une solution logicielle modulaire et automatisée pour le calcul des racines de polynômes. Il exploite des microservices pour effectuer des calculs numériques et symboliques à l'aide de bibliothèques comme **Numpy**, **Sympy**, **Newton-Raphson** , et l' **algorithme de Matplotlib** pour visualiser le graphe de solutions .  
 
 L'application est accessible via des interfaces web et mobiles, permettant aux utilisateurs de soumettre des polynômes, de choisir un algorithme de calcul et de consulter l'historique des résultats en plus d'une visualisation graphique de polynome.  
 
 ## Fonctionnalités principales  
 - **Calcul automatique des racines de polynômes** (Numpy, Sympy, Newton-Raphson)  
-- **Gestion des utilisateurs** (inscription, connexion, récupération de mot de passe)  
+- **Gestion des utilisateurs** (inscription, connexion, récupération de mot de passe) incluant JWT
 - **Historique des calculs**  
 - **Notification par email**  
 - **Interfaces Web et Mobile** (ReactJS et Flutter)  
