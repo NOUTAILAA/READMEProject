@@ -230,8 +230,8 @@ API Backend : http://localhost:8082
 docker-compose down
 
 ---
-### Vidéo démonstration 
+### Vidéo démonstration
 
-![Demo]((https://streamable.com/1dn6t5)) 
+[Vidéo démonstration](https://streamable.com/1dn6t5)
 
 
