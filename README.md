@@ -20,7 +20,7 @@ L'application est accessible via des interfaces web et mobiles, permettant aux u
 
 ## Architecture du logiciel  
 L'application est construite autour de quatre microservices principaux :  
-- **Microservice de Stockage (Spring Boot)** : Gestion des requêtes utilisateur et stockage  
+- **Microservice de Stockage (Spring Boot)** : Gestion des requêtes utilisateur avec JWT et stockage  
 - **Microservice Numpy (Flask/Python)** : Calcul numérique des racines  
 - **Microservice Sympy (Flask/Python)** : Factorisation symbolique et calcul algébrique  
 - **Microservice Newton-Raphson (Flask/Python)** : Approximations itératives des racines  
@@ -68,6 +68,11 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 
 ### Microservice SPRING BOOT  
 ![SonarQube SPRING BOOT](./images/microservStockage.jpg)  
+
+---
+### Vidéo démonstration
+[Vidéo démonstration](https://streamable.com/1dn6t5)
+
 ---
 ## Images dans Docker
 ![Images Docker](./images/imageDockerr2.jpg) 
@@ -433,14 +438,6 @@ pipeline {
 
 ```
 ----
-## Utilisation 
-### Pour se connecter en tant que calculateur :
-email:notaila7@gmail.com
-password : password123
-
-### Pour se connecter en tant qu'admin :
-email:root@gmail.com
-password : root
 
 ## Intégration des pipelines
 
@@ -492,12 +489,23 @@ Frontend Web : http://localhost:3000
 API Backend : http://localhost:8082
 
 ---
+## Utilisation 
+### Pour se connecter en tant que calculateur :
+email:notaila7@gmail.com
+password : password123
+
+----
+
+### Pour se connecter en tant qu'admin :
+email:root@gmail.com
+password : root
+
+---
 ### Pour arreter et supprimer  tous les conteneurs en cours d'execution :
 docker-compose down
 
 ---
-### Vidéo démonstration
 
-[Vidéo démonstration](https://streamable.com/1dn6t5)
+
 
 
