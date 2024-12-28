@@ -472,13 +472,13 @@ Notre projet présente plusieurs impacts significatifs :
 
 ### Cloner le projet :  
 ```bash
-git clone https://github.com/Bourhazi/ACE_Project
+git clone --recurse-submodules https://github.com/Bourhazi/ACE_Project.git
 cd ACE_Project
 ```
 ---
 
 #### Lancer les Services avec Docker
-
+docker-compose build
 docker-compose up
 
 ---
