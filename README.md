@@ -250,7 +250,7 @@ pipeline {
             steps {
                 script {
                     echo "Clonage du dépôt et des sous-modules"
-                    git url: 'https://github.com/Bourhazi/ACE_Project-.git', branch: 'main'
+                    git url: 'https://github.com/Bourhazi/ACE_Project.git', branch: 'main'
                     sh 'git submodule update --init --recursive || git submodule update --force --recursive'
                 }
             }
