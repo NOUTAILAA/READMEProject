@@ -24,7 +24,7 @@ L'application est construite autour de quatre microservices principaux :
 - **Microservice Numpy (Flask/Python)** : Calcul numérique des racines  
 - **Microservice Sympy (Flask/Python)** : Factorisation symbolique et calcul algébrique  
 - **Microservice Newton-Raphson (Flask/Python)** : Approximations itératives des racines  
-
+![Diagramme BPMN](./images/BPMN3.jpg)  
 ---
 
 ## Flux de calcul de racines polynomiales  
