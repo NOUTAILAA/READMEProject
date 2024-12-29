@@ -62,8 +62,9 @@ L'analyse SonarQube garantit la qualité et la sécurité du code source pour ch
 
 ### Microservice Numpy  
 ![SonarQube Numpy](./images/microservnumpy.jpg)  
-  
-### Microservice Sympy  
+  ### Microservice Sympy  
+![SonarQube Sympy](./images/microservsympy.jpg) 
+### Microservice Matplotlib
 ![SonarQube Sympy](./images/microservmatplotlib.jpg) 
 
 ### Microservice SPRING BOOT  
